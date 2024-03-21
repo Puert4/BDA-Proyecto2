@@ -44,6 +44,8 @@ public class LicenciaCostoNormal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jLabel2.setText("Costo Normal");
 
         jLabel3.setText("Vigencia");
