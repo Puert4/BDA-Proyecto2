@@ -5,6 +5,7 @@
 package entidadesJPA;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,16 +22,22 @@ public class Vehiculo implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "color")
     private String color;
     
+    @Column(name = "linea")
     private String linea;
     
+    @Column(name = "modelo")
     private String modelo;
     
+    @Column(name = "marca")
     private String marca;
     
+    @Column(name = "serie_vehicular")
     private String serieVehicular;
     
+    @Column(name = "estado_vehicular")
     private EstadoDeVehiculo estadoVehicular;
 
 }
