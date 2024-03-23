@@ -19,13 +19,13 @@ public class Licencia implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "costo")
+    @Column(name = "costo", nullable = false)
     private Double costo;
 
-    @Column(name = "vigencia")
+    @Column(name = "vigencia", nullable = false)
     private Calendar vigencia;
 
-    @Column(name = "fecha_emision")
+    @Column(name = "fecha_emision", nullable = false)
     private Calendar fechaEmision;
 
 }

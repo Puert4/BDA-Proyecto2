@@ -19,21 +19,21 @@ public class Persona implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "rfc")
+    @Column(name = "rfc", nullable = false, length = 20)
     private String rfc;
 
-    @Column(name = "nombres")
+    @Column(name = "nombres", nullable = false, length = 50)
     private String nombres;
 
-    @Column(name = "apellido_paterno")
+    @Column(name = "apellido_paterno", nullable = false, length = 25)
     private String apellidoPaterno;
 
-    @Column(name = "apellido_materno")
+    @Column(name = "apellido_materno", nullable = false, length = 25)
     private String apellidoMaterno;
 
-    @Column(name = "fecha_nacimiento")
+    @Column(name = "fecha_nacimiento", nullable = false)
     private Calendar fechaNacimiento;
 
-    @Column(name = "telefono")
+    @Column(name = "telefono", nullable = false, length = 30)
     private String telefono;
 }

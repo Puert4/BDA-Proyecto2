@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @author TeLesheo
  */
 @Entity
-public class Automovil implements Serializable {
+public class Automovil extends Vehiculo implements Serializable {
 
 
     @Id
