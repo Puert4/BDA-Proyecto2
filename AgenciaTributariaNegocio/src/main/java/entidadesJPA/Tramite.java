@@ -1,6 +1,7 @@
 package entidadesJPA;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,5 +19,12 @@ public class Tramite implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Double costo;
+    
+    private Calendar fechaEmision;
+    
+    private Calendar vigencia;
+    
+   
     
 }
