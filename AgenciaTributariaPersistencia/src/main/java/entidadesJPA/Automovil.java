@@ -13,10 +13,4 @@ import javax.persistence.Id;
 @Entity
 public class Automovil extends Vehiculo implements Serializable {
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    
 }

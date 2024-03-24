@@ -35,4 +35,6 @@ public class Placas implements Serializable {
     private String seriePlacas;
     
     
+    
+    
 }

@@ -2,6 +2,7 @@ package entidadesJPA;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,4 +37,10 @@ public class Persona implements Serializable {
 
     @Column(name = "telefono", nullable = false, length = 30)
     private String telefono;
+    
+    private List <Vehiculo> listaVehiculos;
+    
+    private List <Licencia> listaLicencias;
+    
+    private List <Placas> listaPlacas;
 }
