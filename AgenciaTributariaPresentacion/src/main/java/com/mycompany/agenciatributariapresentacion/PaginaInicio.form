@@ -26,6 +26,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="270" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btnAgregarPersonas" max="32767" attributes="0"/>
                   <Component id="lbl_tramites" max="32767" attributes="0"/>
                   <Component id="btn_reportes" alignment="1" max="32767" attributes="0"/>
                   <Component id="btn_placas" alignment="1" max="32767" attributes="0"/>
@@ -40,13 +41,15 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="lbl_tramites" min="-2" pref="61" max="-2" attributes="0"/>
-              <EmptySpace pref="120" max="32767" attributes="0"/>
+              <EmptySpace pref="126" max="32767" attributes="0"/>
               <Component id="btn_licencia" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_placas" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btn_reportes" min="-2" pref="31" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btnAgregarPersonas" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,6 +80,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tramites"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAgregarPersonas">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="20 changos"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarPersonasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

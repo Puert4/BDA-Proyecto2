@@ -4,16 +4,21 @@
  */
 package com.mycompany.agenciatributariapresentacion;
 
+import com.mycompany.agenciatributarianegocio.control.Icontrol;
+import com.mycompany.agenciatributarianegocio.control.control;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author TeLesheo
  */
 public class LogIn extends javax.swing.JFrame {
-
+    Icontrol control;
     /**
      * Creates new form LogIn
      */
     public LogIn() {
+        control=new control();
         initComponents();
     }
 
@@ -61,16 +66,16 @@ public class LogIn extends javax.swing.JFrame {
                         .addComponent(lbl_login, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(205, 205, 205))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_ingresar)
-                        .addGap(272, 272, 272))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lbl_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(227, 227, 227))))
+                        .addGap(227, 227, 227))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_ingresar)
+                        .addGap(280, 280, 280))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,16 +90,24 @@ public class LogIn extends javax.swing.JFrame {
                 .addComponent(lbl_contraseña)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addGap(73, 73, 73)
                 .addComponent(btn_ingresar)
-                .addGap(50, 50, 50))
+                .addGap(48, 48, 48))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        // TODO add your handling code here:
+        
+        if (txt_usuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el usuario","!! ALERTA ¡¡",JOptionPane.WARNING_MESSAGE);
+        }else if (txt_contraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese la contraseña","!! ALERTA ¡¡",JOptionPane.WARNING_MESSAGE);
+        }else{
+            control.inicioSesion(txt_usuario.getText(), txt_contraseña.getText(), control);
+            this.dispose();
+        }
     }//GEN-LAST:event_btn_ingresarActionPerformed
 
     /**
