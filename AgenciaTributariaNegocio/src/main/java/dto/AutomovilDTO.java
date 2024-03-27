@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dto;
 
 /**
@@ -10,7 +6,7 @@ package dto;
  */
 public class AutomovilDTO {
 
-    //color,linea,modelo,marca,serieVehicular,estadoVehicular
+    private Integer id;
     private String color;
     private String linea;
     private String modelo;
@@ -28,6 +24,24 @@ public class AutomovilDTO {
         this.marca = marca;
         this.serieVehicular = serieVehicular;
         this.estadoVehicular = estadoVehicular;
+    }
+
+    public AutomovilDTO(Integer id, String color, String linea, String modelo, String marca, String serieVehicular, String estadoVehicular) {
+        this.id = id;
+        this.color = color;
+        this.linea = linea;
+        this.modelo = modelo;
+        this.marca = marca;
+        this.serieVehicular = serieVehicular;
+        this.estadoVehicular = estadoVehicular;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getColor() {

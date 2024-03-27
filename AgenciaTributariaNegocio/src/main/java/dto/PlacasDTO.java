@@ -9,6 +9,7 @@ import java.util.Calendar;
 public class PlacasDTO {
 
     //cost,vigencia,fechaEmision,fechaRecepcion,seriePlacas
+    private Integer id;
     private Double costo;
     private Calendar vigencia;
     private Calendar fechaEmision;
@@ -24,6 +25,23 @@ public class PlacasDTO {
         this.fechaEmision = fechaEmision;
         this.fechaRecepcion = fechaRecepcion;
         this.seriePlacas = seriePlacas;
+    }
+
+    public PlacasDTO(Integer id, Double costo, Calendar vigencia, Calendar fechaEmision, Calendar fechaRecepcion, String seriePlacas) {
+        this.id = id;
+        this.costo = costo;
+        this.vigencia = vigencia;
+        this.fechaEmision = fechaEmision;
+        this.fechaRecepcion = fechaRecepcion;
+        this.seriePlacas = seriePlacas;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Double getCosto() {

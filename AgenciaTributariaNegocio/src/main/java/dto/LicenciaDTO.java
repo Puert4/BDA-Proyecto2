@@ -8,6 +8,7 @@ import java.util.Calendar;
  */
 public class LicenciaDTO {
 
+    private Integer id;
     private Double costo;
     private Calendar vigencia;
     private Calendar fechaEmision;
@@ -19,6 +20,21 @@ public class LicenciaDTO {
         this.costo = costo;
         this.vigencia = vigencia;
         this.fechaEmision = fechaEmision;
+    }
+
+    public LicenciaDTO(Integer id, Double costo, Calendar vigencia, Calendar fechaEmision) {
+        this.id = id;
+        this.costo = costo;
+        this.vigencia = vigencia;
+        this.fechaEmision = fechaEmision;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Double getCosto() {
