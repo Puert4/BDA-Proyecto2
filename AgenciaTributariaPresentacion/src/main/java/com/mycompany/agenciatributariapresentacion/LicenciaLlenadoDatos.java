@@ -8,12 +8,12 @@ import javax.swing.JOptionPane;
  * @author TeLesheo
  */
 public class LicenciaLlenadoDatos extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form LicenciaLlenadoDatos
      */
     public LicenciaLlenadoDatos() {
-        
+
         initComponents();
     }
 
@@ -230,15 +230,15 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (txt_rfc.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No has ingresado la RFC ","!! ALERTA ¡¡",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No has ingresado la RFC ", "!! ALERTA ¡¡", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        if (txt_nombres.getText().isEmpty() || txt_apellido_paterno.getText().isEmpty() || txt_apellido_materno.getText().isEmpty() || txt_telefono.getText().isEmpty() || txtFech.getText().isEmpty() ) {
+        if (txt_nombres.getText().isEmpty() || txt_apellido_paterno.getText().isEmpty() || txt_apellido_materno.getText().isEmpty() || txt_telefono.getText().isEmpty() || txtFech.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "No esta autorizado para sacar una licencia", "!! BLOQUEADO ¡¡", JOptionPane.INFORMATION_MESSAGE);
-        }else if (txt_rfc.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No has realizado busqueda de la persona","!! ALERTA ¡¡",JOptionPane.WARNING_MESSAGE);
+        } else if (txt_rfc.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No has realizado busqueda de la persona", "!! ALERTA ¡¡", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
@@ -280,12 +280,12 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    public String rfc(){
+    public String rfc() {
         return txt_rfc.getText();
     }
-    
-    public boolean cambioBoton(){
-        boolean b= !txt_rfc.getText().isEmpty();
+
+    public boolean cambioBoton() {
+        boolean b = !txt_rfc.getText().isEmpty();
         return b;
     }
 
