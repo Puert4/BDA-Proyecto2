@@ -37,8 +37,7 @@ public class pruebaJPA {
 //        // Close EntityManager and EntityManagerFactory
 //        entityManager.close();
 //        entityManagerFactory.close();
-
-   // Create an EntityManagerFactory based on the persistence unit defined in persistence.xml
+        // Create an EntityManagerFactory based on the persistence unit defined in persistence.xml
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
 
         // Create an EntityManager
@@ -48,13 +47,12 @@ public class pruebaJPA {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
-        try {
-                     // Set the date of birth
-            Calendar dob = Calendar.getInstance();
-            dob.set(1990, Calendar.JANUARY, 1);
-       
-            // Create a new Persona object
-            Persona persona = new Persona("ABCD123456EFG","John","Doe","Smith",dob,"1234567890");
+        // Set the date of birth
+        Calendar dob = Calendar.getInstance();
+        dob.set(1990, Calendar.JANUARY, 1);
+
+        // Create a new Persona object
+        Persona persona = new Persona("ABCD123456EFG", "John", "Doe", "Smith", dob, "1234567890");
 //            persona.setRfc("ABCD123456EFG");
 //            persona.setNombres("John");
 //            persona.setApellidoPaterno("Doe");
@@ -64,26 +62,14 @@ public class pruebaJPA {
 //
 //            persona.setTelefono("1234567890");
 
-            // Persist the Persona object
-            em.persist(persona);
+        // Persist the Persona object
+        em.persist(persona);
 
-            // Commit the transaction
-            tx.commit();
+        // Commit the transaction
+        tx.commit();
 
-            // Display success message
-            System.out.println("Persona persisted successfully with ID: " + persona.getId());
-        } catch (Exception e) {
-            // If an error occurs, rollback the transaction
-            if (tx != null && tx.isActive()) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            // Close the EntityManager and EntityManagerFactory
-            em.close();
-            emf.close();
-        }
-    
+        em.close();
+        emf.close();
 
     }
 
