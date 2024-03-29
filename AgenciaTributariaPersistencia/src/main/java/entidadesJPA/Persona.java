@@ -156,7 +156,5 @@ public class Persona implements Serializable {
     public void setListaLicencias(List<Licencia> listaLicencias) {
         this.listaLicencias = listaLicencias;
     }
-    
-    
 
 }
