@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package entidadesJPA;
 
 import java.io.Serializable;
@@ -7,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -15,8 +21,9 @@ import javax.persistence.Id;
 @Entity
 public class Licencia implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "costo", nullable = false)
@@ -27,6 +34,10 @@ public class Licencia implements Serializable {
 
     @Column(name = "fecha_emision", nullable = false)
     private Calendar fechaEmision;
+
+    @ManyToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "id")
+    private Persona persona;
 
     public Licencia() {
     }
@@ -74,6 +85,14 @@ public class Licencia implements Serializable {
 
     public void setFechaEmision(Calendar fechaEmision) {
         this.fechaEmision = fechaEmision;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

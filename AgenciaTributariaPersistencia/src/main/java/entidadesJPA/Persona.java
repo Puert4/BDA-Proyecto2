@@ -6,11 +6,15 @@ package entidadesJPA;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -45,9 +49,9 @@ public class Persona implements Serializable {
 
 //    @OneToMany(mappedBy = "persona", cascade = CascadeType.PERSIST)
 //    private List<Vehiculo> listaVehiculos;
-//
-//    @OneToMany(mappedBy = "persona", cascade = CascadeType.PERSIST)
-//    private List<Licencia> listaLicencias;
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+    private List<Licencia> listaLicencias;
+
     public Persona() {
     }
 
@@ -60,6 +64,25 @@ public class Persona implements Serializable {
         this.telefono = telefono;
     }
 
+    public Persona(String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, Calendar fechaNacimiento, String telefono, List<Licencia> listaLicencias) {
+        this.rfc = rfc;
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.listaLicencias = listaLicencias;
+    }
+
+//    public Persona(String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, Calendar fechaNacimiento, String telefono, List<Licencias> listaLicencias) {
+//        this.rfc = rfc;
+//        this.nombres = nombres;
+//        this.apellidoPaterno = apellidoPaterno;
+//        this.apellidoMaterno = apellidoMaterno;
+//        this.fechaNacimiento = fechaNacimiento;
+//        this.telefono = telefono;
+//        this.listaLicencias = listaLicencias;
+//    }
 //    public Persona(String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, Calendar fechaNacimiento, String telefono, List<Vehiculo> listaVehiculos, List<Licencia> listaLicencias) {
 //        this.rfc = rfc;
 //        this.nombres = nombres;
@@ -126,19 +149,14 @@ public class Persona implements Serializable {
         this.telefono = telefono;
     }
 
-//    public List<Vehiculo> getListaVehiculos() {
-//        return listaVehiculos;
-//    }
-//
-//    public void setListaVehiculos(List<Vehiculo> listaVehiculos) {
-//        this.listaVehiculos = listaVehiculos;
-//    }
-//
-//    public List<Licencia> getListaLicencias() {
-//        return listaLicencias;
-//    }
-//
-//    public void setListaLicencias(List<Licencia> listaLicencias) {
-//        this.listaLicencias = listaLicencias;
-//    }
+    public List<Licencia> getListaLicencias() {
+        return listaLicencias;
+    }
+
+    public void setListaLicencias(List<Licencia> listaLicencias) {
+        this.listaLicencias = listaLicencias;
+    }
+    
+    
+
 }
