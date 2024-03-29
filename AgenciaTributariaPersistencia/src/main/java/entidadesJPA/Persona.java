@@ -47,10 +47,11 @@ public class Persona implements Serializable {
     @Column(name = "telefono", nullable = false, length = 30)
     private String telefono;
 
-//    @OneToMany(mappedBy = "persona", cascade = CascadeType.PERSIST)
-//    private List<Vehiculo> listaVehiculos;
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Licencia> listaLicencias;
+
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
+    private List<Vehiculo> listaVehiculos;
 
     public Persona() {
     }
@@ -74,25 +75,16 @@ public class Persona implements Serializable {
         this.listaLicencias = listaLicencias;
     }
 
-//    public Persona(String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, Calendar fechaNacimiento, String telefono, List<Licencias> listaLicencias) {
-//        this.rfc = rfc;
-//        this.nombres = nombres;
-//        this.apellidoPaterno = apellidoPaterno;
-//        this.apellidoMaterno = apellidoMaterno;
-//        this.fechaNacimiento = fechaNacimiento;
-//        this.telefono = telefono;
-//        this.listaLicencias = listaLicencias;
-//    }
-//    public Persona(String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, Calendar fechaNacimiento, String telefono, List<Vehiculo> listaVehiculos, List<Licencia> listaLicencias) {
-//        this.rfc = rfc;
-//        this.nombres = nombres;
-//        this.apellidoPaterno = apellidoPaterno;
-//        this.apellidoMaterno = apellidoMaterno;
-//        this.fechaNacimiento = fechaNacimiento;
-//        this.telefono = telefono;
-//        this.listaVehiculos = listaVehiculos;
-//        this.listaLicencias = listaLicencias;
-//    }
+    public Persona(String rfc, String nombres, String apellidoPaterno, String apellidoMaterno, Calendar fechaNacimiento, List<Vehiculo> listaVehiculo, String telefono) {
+        this.rfc = rfc;
+        this.nombres = nombres;
+        this.apellidoPaterno = apellidoPaterno;
+        this.apellidoMaterno = apellidoMaterno;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+        this.listaVehiculos = listaVehiculos;
+    }
+
     public Long getId() {
         return id;
     }
@@ -156,5 +148,15 @@ public class Persona implements Serializable {
     public void setListaLicencias(List<Licencia> listaLicencias) {
         this.listaLicencias = listaLicencias;
     }
+
+    public List<Vehiculo> getListaVehiculos() {
+        return listaVehiculos;
+    }
+
+    public void setListaVehiculos(List<Vehiculo> listaVehiculo) {
+        this.listaVehiculos = listaVehiculo;
+    }
+    
+    
 
 }

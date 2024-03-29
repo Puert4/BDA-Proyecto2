@@ -5,14 +5,13 @@
 package entidadesJPA;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,7 +21,7 @@ import javax.persistence.OneToMany;
 public class Vehiculo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "color", nullable = false, length = 100)
@@ -43,31 +42,21 @@ public class Vehiculo implements Serializable {
     @Column(name = "estado_vehicular", nullable = false)
     private EstadoDeVehiculo estadoVehicular;
 
-    @OneToMany(mappedBy = "vehiculo", cascade = CascadeType.PERSIST)
-    private List<Placas> listaPlacas;
+    @ManyToOne
+    @JoinColumn(name = "persona_id", referencedColumnName = "id")
+    private Persona persona;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(String color, String linea, String modelo, String marca, String serieVehicular, EstadoDeVehiculo estadoVehicular, List<Placas> listaPlacas) {
+    public Vehiculo(String color, String linea, String modelo, String marca, String serieVehicular, EstadoDeVehiculo estadoVehicular, Persona persona) {
         this.color = color;
         this.linea = linea;
         this.modelo = modelo;
         this.marca = marca;
         this.serieVehicular = serieVehicular;
         this.estadoVehicular = estadoVehicular;
-        this.listaPlacas = listaPlacas;
-    }
-
-    public Vehiculo(Long id, String color, String linea, String modelo, String marca, String serieVehicular, EstadoDeVehiculo estadoVehicular, List<Placas> listaPlacas) {
-        this.id = id;
-        this.color = color;
-        this.linea = linea;
-        this.modelo = modelo;
-        this.marca = marca;
-        this.serieVehicular = serieVehicular;
-        this.estadoVehicular = estadoVehicular;
-        this.listaPlacas = listaPlacas;
+        this.persona = persona;
     }
 
     public Long getId() {
@@ -126,12 +115,12 @@ public class Vehiculo implements Serializable {
         this.estadoVehicular = estadoVehicular;
     }
 
-    public List<Placas> getListaPlacas() {
-        return listaPlacas;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setListaPlacas(List<Placas> listaPlacas) {
-        this.listaPlacas = listaPlacas;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
 }

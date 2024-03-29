@@ -127,30 +127,70 @@ public class pruebaJPA {
 //        em.close();
 //        emf.close();
 //        
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
-        EntityManager em = emf.createEntityManager();
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+//        EntityManager em = emf.createEntityManager();
+//
+//        Calendar dob19 = Calendar.getInstance();
+//        dob19.set(1997, Calendar.AUGUST, 8);
+//        Persona persona = new Persona("132456", "Jullian  Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
+//
+//        Licencia licencia = new Licencia();
+//        licencia.setCosto(100.0);
+//        Calendar vigencia = Calendar.getInstance();
+//        vigencia.set(2025, Calendar.DECEMBER, 31); // Establecer la vigencia hasta el 31 de diciembre de 2025
+//        licencia.setVigencia(vigencia);
+//        Calendar fechaEmision = Calendar.getInstance();
+//        licencia.setFechaEmision(fechaEmision);
+//
+//        // Asignar la licencia a la persona
+//        persona.setListaLicencias(Collections.singletonList(licencia));
+//
+//        EntityTransaction tx = em.getTransaction();
+//        tx.begin();
+//        em.persist(persona);
+//        tx.commit();
+//        em.close();
+//        emf.close();
+        // Crear una fábrica de gestores de entidad usando la unidad de persistencia definida en persistence.xml
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
 
-        Calendar dob19 = Calendar.getInstance();
-        dob19.set(1997, Calendar.AUGUST, 8);
-        Persona persona = new Persona("132456", "Jullian  Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
+        // Obtener un gestor de entidad desde la fábrica
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        Licencia licencia = new Licencia();
-        licencia.setCosto(100.0);
-        Calendar vigencia = Calendar.getInstance();
-        vigencia.set(2025, Calendar.DECEMBER, 31); // Establecer la vigencia hasta el 31 de diciembre de 2025
-        licencia.setVigencia(vigencia);
-        Calendar fechaEmision = Calendar.getInstance();
-        licencia.setFechaEmision(fechaEmision);
+        // Iniciar una transacción
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
 
-        // Asignar la licencia a la persona
-        persona.setListaLicencias(Collections.singletonList(licencia));
+        try {
+            // Crear una persona
+            Persona persona = new Persona("RFC123", "Juan", "Perez", "Gomez", Calendar.getInstance(), "1234567890");
 
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        em.persist(persona);
-        tx.commit();
-        em.close();
-        emf.close();
+            // Crear un vehículo
+            Vehiculo vehiculo = new Vehiculo("Rojo", "Sedan", "2022", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
+
+            // Guardar la persona y el vehículo en la base de datos
+            entityManager.persist(persona);
+            entityManager.persist(vehiculo);
+
+            // Realizar la asociación entre la persona y el vehículo
+            persona.getListaVehiculos().add(vehiculo);
+            vehiculo.setPersona(persona);
+
+            // Confirmar la transacción
+            transaction.commit();
+        } catch (Exception e) {
+            // En caso de error, hacer rollback
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            // Cerrar el gestor de entidad
+            entityManager.close();
+        }
+
+        // Cerrar la fábrica de gestores de entidad
+        entityManagerFactory.close();
 
     }
 
