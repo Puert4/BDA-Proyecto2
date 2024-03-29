@@ -166,7 +166,7 @@ public class pruebaJPA {
             Persona persona = new Persona("RFC123", "Juan", "Perez", "Gomez", Calendar.getInstance(), "1234567890");
 
             // Crear un vehículo
-            Vehiculo vehiculo = new Vehiculo("Rojo", "Sedan", "2022", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
+            Vehiculo vehiculo = new Vehiculo("Azul", "Sport", "2022", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
 
             // Guardar la persona y el vehículo en la base de datos
             entityManager.persist(persona);
@@ -175,6 +175,7 @@ public class pruebaJPA {
             // Realizar la asociación entre la persona y el vehículo
             persona.getListaVehiculos().add(vehiculo);
             vehiculo.setPersona(persona);
+            System.out.println("Aqui esta el estado: "+vehiculo.getEstadoVehicular());
 
             // Confirmar la transacción
             transaction.commit();
@@ -182,6 +183,7 @@ public class pruebaJPA {
             // En caso de error, hacer rollback
             if (transaction.isActive()) {
                 transaction.rollback();
+                
             }
             e.printStackTrace();
         } finally {
