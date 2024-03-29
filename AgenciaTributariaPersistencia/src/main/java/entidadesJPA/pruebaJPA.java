@@ -151,7 +151,7 @@ public class pruebaJPA {
 //        tx.commit();
 //        em.close();
 //        emf.close();
-        // Crear una fábrica de gestores de entidad usando la unidad de persistencia definida en persistence.xml
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
 
         // Obtener un gestor de entidad desde la fábrica
@@ -163,19 +163,18 @@ public class pruebaJPA {
 
         try {
             // Crear una persona
-            Persona persona = new Persona("RFC123", "Juan", "Perez", "Gomez", Calendar.getInstance(), "1234567890");
+            Persona persona = new Persona("RFC123", "Eduardo", "Chavez", "Lopez", Calendar.getInstance(), "1234567890");
 
             // Crear un vehículo
-            Vehiculo vehiculo = new Vehiculo("Azul", "Sport", "2022", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
-
+           Automoviles automovil = new Automoviles("rojo", "sedán", "2022", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
             // Guardar la persona y el vehículo en la base de datos
             entityManager.persist(persona);
-            entityManager.persist(vehiculo);
+            entityManager.persist(automovil);
 
             // Realizar la asociación entre la persona y el vehículo
-            persona.getListaVehiculos().add(vehiculo);
-            vehiculo.setPersona(persona);
-            System.out.println("Aqui esta el estado: "+vehiculo.getEstadoVehicular());
+            persona.getListaVehiculos().add(automovil);
+            automovil.setPersona(persona);
+            System.out.println("Aqui esta el estado: "+automovil.getEstadoVehicular());
 
             // Confirmar la transacción
             transaction.commit();
@@ -193,6 +192,8 @@ public class pruebaJPA {
 
         // Cerrar la fábrica de gestores de entidad
         entityManagerFactory.close();
+
+
 
     }
 
