@@ -129,36 +129,35 @@ public class pruebaJPA {
 //        
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Ejemplo de como guardar licencia
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
-        EntityManager em = emf.createEntityManager();
-
-        //Creamos una persona
-        Calendar dob19 = Calendar.getInstance();
-        dob19.set(1997, Calendar.AUGUST, 8);
-        Persona persona = new Persona("132456", "Jullian Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
-
-        //Creamos una licencia
-        Licencia licencia = new Licencia();
-        licencia.setCosto(100.0);
-        Calendar vigencia = Calendar.getInstance();
-        vigencia.set(2025, Calendar.DECEMBER, 31);
-        licencia.setVigencia(vigencia);
-        Calendar fechaEmision = Calendar.getInstance();
-        licencia.setFechaEmision(fechaEmision);
-
-        // Se establece la relacion bidireccional
-        licencia.setPersona(persona);
-        persona.setListaLicencias(Collections.singletonList(licencia));
-
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        //Se persisten los datos
-        em.persist(persona);
-        em.persist(licencia);
-        tx.commit();
-        em.close();
-        emf.close();
-
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+//        EntityManager em = emf.createEntityManager();
+//
+//        //Creamos una persona
+//        Calendar dob19 = Calendar.getInstance();
+//        dob19.set(1997, Calendar.AUGUST, 8);
+//        Persona persona = new Persona("132456", "Jullian Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
+//
+//        //Creamos una licencia
+//        Licencia licencia = new Licencia();
+//        licencia.setCosto(100.0);
+//        Calendar vigencia = Calendar.getInstance();
+//        vigencia.set(2025, Calendar.DECEMBER, 31);
+//        licencia.setVigencia(vigencia);
+//        Calendar fechaEmision = Calendar.getInstance();
+//        licencia.setFechaEmision(fechaEmision);
+//
+//        // Se establece la relacion bidireccional
+//        licencia.setPersona(persona);
+//        persona.setListaLicencias(Collections.singletonList(licencia));
+//
+//        EntityTransaction tx = em.getTransaction();
+//        tx.begin();
+//        //Se persisten los datos
+//        em.persist(persona);
+//        em.persist(licencia);
+//        tx.commit();
+//        em.close();
+//        emf.close();
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
 //        EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -197,6 +196,100 @@ public class pruebaJPA {
 //        }
 //
 //        entityManagerFactory.close();
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Ejemplo de vehiculo y placa
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+//        EntityManager em = emf.createEntityManager();
+//
+//        try {
+//            // Crear un vehículo
+//            Vehiculo vehiculo = new Vehiculo();
+//            vehiculo.setColor("Rojo");
+//            vehiculo.setLinea("Sedán");
+//            vehiculo.setModelo("2022");
+//            vehiculo.setMarca("Toyota");
+//            vehiculo.setSerieVehicular("123ABC");
+//            vehiculo.setEstadoVehicular(EstadoDeVehiculo.USADO); // Suponiendo que EstadoDeVehiculo es un enum con opciones USADO y NUEVO
+//
+//            // Crear una placa
+//            Placa placa = new Placa();
+//            placa.setCosto(50.0);
+//            Calendar vigenciaPlaca = Calendar.getInstance();
+//            vigenciaPlaca.set(2025, Calendar.DECEMBER, 31);
+//            placa.setVigencia(vigenciaPlaca);
+//            Calendar fechaEmisionPlaca = Calendar.getInstance();
+//            placa.setFechaEmision(fechaEmisionPlaca);
+//            Calendar fechaRecepcionPlaca = Calendar.getInstance();
+//            placa.setFechaRecepcion(fechaRecepcionPlaca);
+//            placa.setSeriePlacas("XYZ987");
+//
+//            // Establecer la relación bidireccional
+//            placa.setVehiculo(vehiculo);
+//            vehiculo.setPlacas(Collections.singletonList(placa));
+//
+//            // Iniciar una transacción y persistir los datos
+//            EntityTransaction tx = em.getTransaction();
+//            tx.begin();
+//            em.persist(vehiculo);
+//            em.persist(placa);
+//            tx.commit();
+//        } finally {
+//            // Cerrar EntityManager y EntityManagerFactory
+//            em.close();
+//            emf.close();
+//        }
+///////////////////////////////////////////////////////////////////////////////////////////////
+ // Ejemplo de relacion persona, auto, placa
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            // Crear una persona
+            Calendar dob19 = Calendar.getInstance();
+            dob19.set(1997, Calendar.AUGUST, 8);
+            Persona persona = new Persona("132456", "Jullian Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
+
+            // Crear un vehículo
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.setColor("Rojo");
+            vehiculo.setLinea("Sedán");
+            vehiculo.setModelo("2022");
+            vehiculo.setMarca("Toyota");
+            vehiculo.setSerieVehicular("123ABC");
+            vehiculo.setEstadoVehicular(EstadoDeVehiculo.USADO); // Suponiendo que EstadoDeVehiculo es un enum con opciones USADO y NUEVO
+
+            // Asociar el vehículo con la persona propietaria
+            vehiculo.setPersona(persona);
+
+            // Crear una placa
+            Placa placa = new Placa();
+            placa.setCosto(50.0);
+            Calendar vigenciaPlaca = Calendar.getInstance();
+            vigenciaPlaca.set(2025, Calendar.DECEMBER, 31);
+            placa.setVigencia(vigenciaPlaca);
+            Calendar fechaEmisionPlaca = Calendar.getInstance();
+            placa.setFechaEmision(fechaEmisionPlaca);
+            Calendar fechaRecepcionPlaca = Calendar.getInstance();
+            placa.setFechaRecepcion(fechaRecepcionPlaca);
+            placa.setSeriePlacas("XYZ987");
+
+            // Establecer la relación bidireccional
+            placa.setVehiculo(vehiculo);
+            vehiculo.setPlacas(Collections.singletonList(placa));
+
+            // Iniciar una transacción, persistir los datos y confirmar la transacción
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            em.persist(persona);
+            em.persist(vehiculo);
+            em.persist(placa);
+            tx.commit();
+        } finally {
+            // Cerrar EntityManager y EntityManagerFactory
+            em.close();
+            emf.close();
+        }
+
     }
 
 }
