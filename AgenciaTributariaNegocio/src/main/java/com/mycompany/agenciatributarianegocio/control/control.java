@@ -3,7 +3,6 @@ package com.mycompany.agenciatributarianegocio.control;
 import com.mycompany.agenciatributariapresentacion.LicenciaLlenadoDatos;
 import com.mycompany.agenciatributariapresentacion.PaginaInicio;
 import com.mycompany.proyectobda2.Persistencia.EntidadesJPA.Persona;
-
 import java.util.Calendar;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -39,7 +38,7 @@ public class control implements Icontrol {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("conexionPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            // Crear un objeto Calendar para cada fecha de nacimiento
+
             Calendar fechaNacimiento1 = Calendar.getInstance();
             fechaNacimiento1.set(1990, Calendar.JANUARY, 1);
 
@@ -156,6 +155,11 @@ public class control implements Icontrol {
     public void registrarLicencia() {
         LicenciaLlenadoDatos frmLicencias = new LicenciaLlenadoDatos();
         frmLicencias.setVisible(true);
+        
+        
+        
+        
+
         if (frmLicencias.cambioBoton()) {
             System.out.println("das" + frmLicencias.rfc());
         }
