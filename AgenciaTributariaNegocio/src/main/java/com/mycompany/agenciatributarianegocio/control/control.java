@@ -1,11 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.agenciatributarianegocio.control;
 
 import com.mycompany.agenciatributariapresentacion.LicenciaLlenadoDatos;
 import com.mycompany.agenciatributariapresentacion.PaginaInicio;
+import entidadesJPA.Persona;
+import java.util.Calendar;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,7 +34,6 @@ public class control implements Icontrol {
     @Override
     public void agregaPersonas() {
         try {
-            //Codigo con la union de negocio
 
             JOptionPane.showMessageDialog(null, "Se ha agregado 20 personas", "!! EXITO ¡¡", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {

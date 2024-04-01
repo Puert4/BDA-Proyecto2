@@ -198,46 +198,46 @@ public class pruebaJPA {
 //        entityManagerFactory.close();
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Ejemplo de vehiculo y placa
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
-//        EntityManager em = emf.createEntityManager();
-//
-//        try {
-//            // Crear un vehículo
-//            Vehiculo vehiculo = new Vehiculo();
-//            vehiculo.setColor("Rojo");
-//            vehiculo.setLinea("Sedán");
-//            vehiculo.setModelo("2022");
-//            vehiculo.setMarca("Toyota");
-//            vehiculo.setSerieVehicular("123ABC");
-//            vehiculo.setEstadoVehicular(EstadoDeVehiculo.USADO); // Suponiendo que EstadoDeVehiculo es un enum con opciones USADO y NUEVO
-//
-//            // Crear una placa
-//            Placa placa = new Placa();
-//            placa.setCosto(50.0);
-//            Calendar vigenciaPlaca = Calendar.getInstance();
-//            vigenciaPlaca.set(2025, Calendar.DECEMBER, 31);
-//            placa.setVigencia(vigenciaPlaca);
-//            Calendar fechaEmisionPlaca = Calendar.getInstance();
-//            placa.setFechaEmision(fechaEmisionPlaca);
-//            Calendar fechaRecepcionPlaca = Calendar.getInstance();
-//            placa.setFechaRecepcion(fechaRecepcionPlaca);
-//            placa.setSeriePlacas("XYZ987");
-//
-//            // Establecer la relación bidireccional
-//            placa.setVehiculo(vehiculo);
-//            vehiculo.setPlacas(Collections.singletonList(placa));
-//
-//            // Iniciar una transacción y persistir los datos
-//            EntityTransaction tx = em.getTransaction();
-//            tx.begin();
-//            em.persist(vehiculo);
-//            em.persist(placa);
-//            tx.commit();
-//        } finally {
-//            // Cerrar EntityManager y EntityManagerFactory
-//            em.close();
-//            emf.close();
-//        }
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            // Crear un vehículo
+            Vehiculo vehiculo = new Vehiculo();
+            vehiculo.setColor("Rojo");
+            vehiculo.setLinea("Sedán");
+            vehiculo.setModelo("2022");
+            vehiculo.setMarca("Toyota");
+            vehiculo.setSerieVehicular("123ABC");
+            vehiculo.setEstadoVehicular(EstadoDeVehiculo.USADO); // Suponiendo que EstadoDeVehiculo es un enum con opciones USADO y NUEVO
+
+            // Crear una placa
+            Placa placa = new Placa();
+            placa.setCosto(50.0);
+            Calendar vigenciaPlaca = Calendar.getInstance();
+            vigenciaPlaca.set(2025, Calendar.DECEMBER, 31);
+            placa.setVigencia(vigenciaPlaca);
+            Calendar fechaEmisionPlaca = Calendar.getInstance();
+            placa.setFechaEmision(fechaEmisionPlaca);
+            Calendar fechaRecepcionPlaca = Calendar.getInstance();
+            placa.setFechaRecepcion(fechaRecepcionPlaca);
+            placa.setSeriePlacas("XYZ987");
+
+            // Establecer la relación bidireccional
+            placa.setVehiculo(vehiculo);
+            vehiculo.setPlacas(Collections.singletonList(placa));
+
+            // Iniciar una transacción y persistir los datos
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            em.persist(vehiculo);
+            em.persist(placa);
+            tx.commit();
+        } finally {
+            // Cerrar EntityManager y EntityManagerFactory
+            em.close();
+            emf.close();
+        }
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //        // Ejemplo de relacion persona, auto, placa
 //        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
@@ -289,6 +289,9 @@ public class pruebaJPA {
 //            em.close();
 //            emf.close();
 //        }
+
+
+    
     }
 
 }
