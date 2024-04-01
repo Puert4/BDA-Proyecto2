@@ -14,7 +14,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 
 /**
  *
- * @author uirtis
+ * @author Alan
  */
 @Entity(name = "automoviles")
 @DiscriminatorValue("automovil")
