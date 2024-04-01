@@ -239,57 +239,56 @@ public class pruebaJPA {
 //            emf.close();
 //        }
 ///////////////////////////////////////////////////////////////////////////////////////////////
- // Ejemplo de relacion persona, auto, placa
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
-        EntityManager em = emf.createEntityManager();
-
-        try {
-            // Crear una persona
-            Calendar dob19 = Calendar.getInstance();
-            dob19.set(1997, Calendar.AUGUST, 8);
-            Persona persona = new Persona("132456", "Jullian Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
-
-            // Crear un vehículo
-            Vehiculo vehiculo = new Vehiculo();
-            vehiculo.setColor("Rojo");
-            vehiculo.setLinea("Sedán");
-            vehiculo.setModelo("2022");
-            vehiculo.setMarca("Toyota");
-            vehiculo.setSerieVehicular("123ABC");
-            vehiculo.setEstadoVehicular(EstadoDeVehiculo.USADO); // Suponiendo que EstadoDeVehiculo es un enum con opciones USADO y NUEVO
-
-            // Asociar el vehículo con la persona propietaria
-            vehiculo.setPersona(persona);
-
-            // Crear una placa
-            Placa placa = new Placa();
-            placa.setCosto(50.0);
-            Calendar vigenciaPlaca = Calendar.getInstance();
-            vigenciaPlaca.set(2025, Calendar.DECEMBER, 31);
-            placa.setVigencia(vigenciaPlaca);
-            Calendar fechaEmisionPlaca = Calendar.getInstance();
-            placa.setFechaEmision(fechaEmisionPlaca);
-            Calendar fechaRecepcionPlaca = Calendar.getInstance();
-            placa.setFechaRecepcion(fechaRecepcionPlaca);
-            placa.setSeriePlacas("XYZ987");
-
-            // Establecer la relación bidireccional
-            placa.setVehiculo(vehiculo);
-            vehiculo.setPlacas(Collections.singletonList(placa));
-
-            // Iniciar una transacción, persistir los datos y confirmar la transacción
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
-            em.persist(persona);
-            em.persist(vehiculo);
-            em.persist(placa);
-            tx.commit();
-        } finally {
-            // Cerrar EntityManager y EntityManagerFactory
-            em.close();
-            emf.close();
-        }
-
+//        // Ejemplo de relacion persona, auto, placa
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+//        EntityManager em = emf.createEntityManager();
+//
+//        try {
+//            // Creamos persona
+//            Calendar dob19 = Calendar.getInstance();
+//            dob19.set(1997, Calendar.AUGUST, 8);
+//            Persona persona = new Persona("132456", "Jullian H", "Puerta", "Ramirez", dob19, "6441613092");
+//
+//            // Creamos vehiculo
+//            Vehiculo vehiculo = new Vehiculo();
+//            vehiculo.setColor("Rojo");
+//            vehiculo.setLinea("Sedán");
+//            vehiculo.setModelo("2022");
+//            vehiculo.setMarca("Toyota");
+//            vehiculo.setSerieVehicular("123ABC");
+//            vehiculo.setEstadoVehicular(EstadoDeVehiculo.USADO); // Suponiendo que EstadoDeVehiculo es un enum con opciones USADO y NUEVO
+//
+//            // Asociamos el vehiculo con la persona
+//            vehiculo.setPersona(persona);
+//
+//            // Creamos la placa
+//            Placa placa = new Placa();
+//            placa.setCosto(50.0);
+//            Calendar vigenciaPlaca = Calendar.getInstance();
+//            vigenciaPlaca.set(2025, Calendar.DECEMBER, 31);
+//            placa.setVigencia(vigenciaPlaca);
+//            Calendar fechaEmisionPlaca = Calendar.getInstance();
+//            placa.setFechaEmision(fechaEmisionPlaca);
+//            Calendar fechaRecepcionPlaca = Calendar.getInstance();
+//            placa.setFechaRecepcion(fechaRecepcionPlaca);
+//            placa.setSeriePlacas("XYZ987");
+//
+//            // Hacemos la relación bidireccional
+//            placa.setVehiculo(vehiculo);
+//            vehiculo.setPlacas(Collections.singletonList(placa));
+//
+//            // Transaccion y persistencia
+//            EntityTransaction tx = em.getTransaction();
+//            tx.begin();
+//            em.persist(persona);
+//            em.persist(vehiculo);
+//            em.persist(placa);
+//            tx.commit();
+//        } finally {
+//            // Cerramos to'
+//            em.close();
+//            emf.close();
+//        }
     }
 
 }
