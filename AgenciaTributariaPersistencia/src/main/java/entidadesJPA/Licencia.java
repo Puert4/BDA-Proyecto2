@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidadesJPA;
 
 import java.io.Serializable;
@@ -13,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -29,9 +26,11 @@ public class Licencia implements Serializable {
     private Double costo;
 
     @Column(name = "vigencia", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar vigencia;
 
     @Column(name = "fecha_emision", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar fechaEmision;
 
     @ManyToOne

@@ -7,13 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author TeLesheo
  */
 @Entity
-public class Placas implements Serializable {
+public class Placa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,43 +26,38 @@ public class Placas implements Serializable {
     private Double costo;
 
     @Column(name = "vigencia", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar vigencia;
 
     @Column(name = "fecha_emision", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar fechaEmision;
 
     @Column(name = "fecha_recepcion", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Calendar fechaRecepcion;
 
     @Column(name = "serie_placas", nullable = false)
     private String seriePlacas;
 
-    public Placas() {
+    @ManyToOne
+    @JoinColumn(name = "vehiculo_id", nullable = false)
+    private Vehiculo vehiculo;
+
+    public Placa() {
     }
 
-    public Placas(Double costo, Calendar vigencia, Calendar fechaEmision, Calendar fechaRecepcion, String seriePlacas) {
+    public Placa(Double costo, Calendar vigencia, Calendar fechaEmision, Calendar fechaRecepcion, String seriePlacas, Vehiculo vehiculo) {
         this.costo = costo;
         this.vigencia = vigencia;
         this.fechaEmision = fechaEmision;
         this.fechaRecepcion = fechaRecepcion;
         this.seriePlacas = seriePlacas;
-    }
-
-    public Placas(Long id, Double costo, Calendar vigencia, Calendar fechaEmision, Calendar fechaRecepcion, String seriePlacas) {
-        this.id = id;
-        this.costo = costo;
-        this.vigencia = vigencia;
-        this.fechaEmision = fechaEmision;
-        this.fechaRecepcion = fechaRecepcion;
-        this.seriePlacas = seriePlacas;
+        this.vehiculo = vehiculo;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Double getCosto() {
@@ -102,5 +100,12 @@ public class Placas implements Serializable {
         this.seriePlacas = seriePlacas;
     }
 
-    
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
+
 }

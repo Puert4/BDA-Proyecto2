@@ -127,74 +127,76 @@ public class pruebaJPA {
 //        em.close();
 //        emf.close();
 //        
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
-//        EntityManager em = emf.createEntityManager();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Ejemplo de como guardar licencia
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ConexionPU");
+        EntityManager em = emf.createEntityManager();
+
+        //Creamos una persona
+        Calendar dob19 = Calendar.getInstance();
+        dob19.set(1997, Calendar.AUGUST, 8);
+        Persona persona = new Persona("132456", "Jullian Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
+
+        //Creamos una licencia
+        Licencia licencia = new Licencia();
+        licencia.setCosto(100.0);
+        Calendar vigencia = Calendar.getInstance();
+        vigencia.set(2025, Calendar.DECEMBER, 31);
+        licencia.setVigencia(vigencia);
+        Calendar fechaEmision = Calendar.getInstance();
+        licencia.setFechaEmision(fechaEmision);
+
+        // Se establece la relacion bidireccional
+        licencia.setPersona(persona);
+        persona.setListaLicencias(Collections.singletonList(licencia));
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        //Se persisten los datos
+        em.persist(persona);
+        em.persist(licencia);
+        tx.commit();
+        em.close();
+        emf.close();
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
+//        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        EntityTransaction transaction = entityManager.getTransaction();
+//        transaction.begin();
 //
-//        Calendar dob19 = Calendar.getInstance();
-//        dob19.set(1997, Calendar.AUGUST, 8);
-//        Persona persona = new Persona("132456", "Jullian  Herlenn", "Puerta", "Ramirez", dob19, "6441613092");
+//        try {
 //
-//        Licencia licencia = new Licencia();
-//        licencia.setCosto(100.0);
-//        Calendar vigencia = Calendar.getInstance();
-//        vigencia.set(2025, Calendar.DECEMBER, 31); // Establecer la vigencia hasta el 31 de diciembre de 2025
-//        licencia.setVigencia(vigencia);
-//        Calendar fechaEmision = Calendar.getInstance();
-//        licencia.setFechaEmision(fechaEmision);
+//            Persona persona = new Persona("RFC123", "Kevin", "Velasquez", "Lopez", Calendar.getInstance(), "1234567890");
 //
-//        // Asignar la licencia a la persona
-//        persona.setListaLicencias(Collections.singletonList(licencia));
+//            Automovil automovil = new Automovil("Azul", "Sport", "2024", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
+//            
+////            Placa placa = new Placa(100.0,Calendar.getInstance(),Calendar.getInstance(),Calendar.getInstance(),"ABC",automovil);
+//            // Guardar la persona y el vehículo en la base de datos
+//            entityManager.persist(persona);
+//            entityManager.persist(automovil);
+////            entityManager.persist(placa);
 //
-//        EntityTransaction tx = em.getTransaction();
-//        tx.begin();
-//        em.persist(persona);
-//        tx.commit();
-//        em.close();
-//        emf.close();
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ConexionPU");
-
-        // Obtener un gestor de entidad desde la fábrica
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-        // Iniciar una transacción
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-
-        try {
-            // Crear una persona
-            Persona persona = new Persona("RFC123", "Eduardo", "Chavez", "Lopez", Calendar.getInstance(), "1234567890");
-
-            // Crear un vehículo
-           Automoviles automovil = new Automoviles("rojo", "sedán", "2022", "Toyota", "123456", EstadoDeVehiculo.NUEVO, persona);
-            // Guardar la persona y el vehículo en la base de datos
-            entityManager.persist(persona);
-            entityManager.persist(automovil);
-
-            // Realizar la asociación entre la persona y el vehículo
-            persona.getListaVehiculos().add(automovil);
-            automovil.setPersona(persona);
-            System.out.println("Aqui esta el estado: "+automovil.getEstadoVehicular());
-
-            // Confirmar la transacción
-            transaction.commit();
-        } catch (Exception e) {
-            // En caso de error, hacer rollback
-            if (transaction.isActive()) {
-                transaction.rollback();
-                
-            }
-            e.printStackTrace();
-        } finally {
-            // Cerrar el gestor de entidad
-            entityManager.close();
-        }
-
-        // Cerrar la fábrica de gestores de entidad
-        entityManagerFactory.close();
-
-
-
+//            persona.getListaVehiculos().add(automovil);
+//            automovil.setPersona(persona);
+////            automovil.getPlacas().add(placa);
+////            placa.setVehiculo(automovil);
+//            System.out.println("Aqui esta el estado: " + automovil.getEstadoVehicular());
+//
+//            transaction.commit();
+//        } catch (Exception e) {
+//
+//            if (transaction.isActive()) {
+//                transaction.rollback();
+//
+//            }
+//            e.printStackTrace();
+//        } finally {
+//
+//            entityManager.close();
+//        }
+//
+//        entityManagerFactory.close();
     }
 
 }
