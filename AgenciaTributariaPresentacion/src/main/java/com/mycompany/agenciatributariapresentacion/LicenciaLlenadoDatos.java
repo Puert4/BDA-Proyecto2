@@ -50,9 +50,9 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_telefono = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txt_rfc = new javax.swing.JTextField();
         lbl_datos_personales1 = new javax.swing.JLabel();
 
         jMenu1.setText("File");
@@ -146,7 +146,7 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_rfc, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel1)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -157,7 +157,7 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
                                                 .addComponent(jRadioButton1))
                                             .addComponent(jLabel6)))))
                             .addComponent(jLabel5)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 210, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -194,8 +194,8 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_rfc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(brn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,11 +234,11 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-//        if (txt_nombres.getText().isEmpty() || txt_apellido_paterno.getText().isEmpty() || txt_apellido_materno.getText().isEmpty() || txt_telefono.getText().isEmpty() || txt_fecha_nacimiento.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "No esta autorizado para sacar una licencia", "!! BLOQUEADO ¡¡", JOptionPane.INFORMATION_MESSAGE);
-//        } else if (txt_rfc.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "No has realizado busqueda de la persona", "!! ALERTA ¡¡", JOptionPane.WARNING_MESSAGE);
-//        }
+        if (txt_nombres.getText().isEmpty() || txt_apellido_paterno.getText().isEmpty() || txt_apellido_materno.getText().isEmpty() || txt_telefono.getText().isEmpty() || txt_fecha_nacimiento.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No esta autorizado para sacar una licencia", "!! BLOQUEADO ¡¡", JOptionPane.INFORMATION_MESSAGE);
+        } else if (txt_rfc.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No has realizado busqueda de la persona", "!! ALERTA ¡¡", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void brn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brn_regresarActionPerformed
@@ -282,11 +282,10 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
 //    public String rfc() {
 //        return txt_rfc.getText();
 //    }
-
     public boolean cambioBoton() {
-//        boolean b = !txt_rfc.getText().isEmpty();
-//        return b;
-        return true;
+        boolean b = !txt_rfc.getText().isEmpty();
+        return b;
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -306,8 +305,6 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_apellido_materno;
     private javax.swing.JLabel lbl_apellido_paterno;
     private javax.swing.JLabel lbl_datos_personales;
@@ -318,5 +315,7 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
     private javax.swing.JTextField txt_apellido_paterno;
     private javax.swing.JTextField txt_fecha_nacimiento;
     private javax.swing.JTextField txt_nombres;
+    private javax.swing.JTextField txt_rfc;
+    private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
 }
