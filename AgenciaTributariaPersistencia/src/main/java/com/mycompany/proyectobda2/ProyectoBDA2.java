@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
 package com.mycompany.proyectobda2;
 
 import com.mycompany.proyectobda2.Persistencia.EntidadesJPA.Automovil;
@@ -17,7 +13,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * 
+ *
  * @author uirtis
  */
 public class ProyectoBDA2 {
@@ -33,15 +29,13 @@ public class ProyectoBDA2 {
         fechaRecepcion.set(2024, Calendar.MONTH, 24);
         fechaEmision.set(2022, Calendar.MONTH, 30);
         vigencia.set(2024, Calendar.MONTH, 2);
-        
-        
 
         Persona persona = new Persona("ABCD123456XYZ", "ABCX123456XYZ789", fechaNacimiento, "1234567890", "Juan", "Pérez", "González", false);
         Automovil automovil = new Automovil("V123456789", "Toyota", "Corolla", "Sedán", "Blanco", EstadoVehiculo.NUEVO, persona);
         Vehiculo vehiculo = new Vehiculo();
         vehiculo.setId(automovil.getId());
-        
-        Placa placa = new Placa(fechaRecepcion, "ABC123",EstadoPlaca.ACTIVO, vehiculo, fechaEmision, 300.00f, vigencia, persona);
+
+        Placa placa = new Placa(fechaRecepcion, "ABC123", EstadoPlaca.ACTIVO, vehiculo, fechaEmision, 300.00f, vigencia, persona);
         Tramite tramite = new Tramite(fechaEmision, 100.50f, vigencia, persona);
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("conexionPU");

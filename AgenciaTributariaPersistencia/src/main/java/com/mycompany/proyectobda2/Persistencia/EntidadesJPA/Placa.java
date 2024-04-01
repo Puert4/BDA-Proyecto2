@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectobda2.Persistencia.EntidadesJPA;
 
 import java.io.Serializable;
@@ -66,7 +62,7 @@ public class Placa extends Tramite implements Serializable {
         this.estadoPlaca = estadoPlaca;
         this.vehiculo = vehiculo;
     }
-    
+
     @Override
     public Long getId() {
         return id;
