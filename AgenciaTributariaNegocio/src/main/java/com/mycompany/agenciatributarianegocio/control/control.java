@@ -161,7 +161,7 @@ public class control implements Icontrol {
         
 
         if (frmLicencias.cambioBoton()) {
-            System.out.println("das" + frmLicencias.rfc());
+//            System.out.println("das" + frmLicencias.rfc());
         }
 
     }

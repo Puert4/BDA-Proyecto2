@@ -9,12 +9,14 @@ import javax.swing.JOptionPane;
  * @author TeLesheo
  */
 public class LogIn extends javax.swing.JFrame {
+
     Icontrol control;
+
     /**
      * Creates new form LogIn
      */
     public LogIn() {
-        control=new control();
+        control = new control();
         initComponents();
     }
 
@@ -97,12 +99,12 @@ public class LogIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerformed
-        
+
         if (txt_usuario.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese el usuario","!! ALERTA ¡¡",JOptionPane.WARNING_MESSAGE);
-        }else if (txt_contraseña.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingrese la contraseña","!! ALERTA ¡¡",JOptionPane.WARNING_MESSAGE);
-        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese el usuario", "!! ALERTA ¡¡", JOptionPane.WARNING_MESSAGE);
+        } else if (txt_contraseña.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese la contraseña", "!! ALERTA ¡¡", JOptionPane.WARNING_MESSAGE);
+        } else {
             control.inicioSesion(txt_usuario.getText(), txt_contraseña.getText(), control);
             this.dispose();
         }

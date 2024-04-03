@@ -81,7 +81,9 @@ public class Licencias extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bnt_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_registrarActionPerformed
-        control.registrarLicencia();
+        LicenciaLlenadoDatos frmLicenciaLlenadoDatos = new LicenciaLlenadoDatos();
+        frmLicenciaLlenadoDatos.setVisible(true);
+        this.dispose();
        
     }//GEN-LAST:event_bnt_registrarActionPerformed
 

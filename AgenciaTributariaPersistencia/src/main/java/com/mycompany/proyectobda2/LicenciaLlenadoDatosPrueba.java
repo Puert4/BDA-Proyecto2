@@ -1,18 +1,17 @@
-package com.mycompany.agenciatributariapresentacion;
+package com.mycompany.proyectobda2;
 
-import com.mycompany.agenciatributarianegocio.control.Icontrol;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author TeLesheo
  */
-public class LicenciaLlenadoDatos extends javax.swing.JFrame {
+public class LicenciaLlenadoDatosPrueba extends javax.swing.JFrame {
 
     /**
      * Creates new form LicenciaLlenadoDatos
      */
-    public LicenciaLlenadoDatos() {
+    public LicenciaLlenadoDatosPrueba() {
 
         initComponents();
     }
@@ -100,6 +99,11 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
         jLabel6.setText("RFC");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -220,6 +224,10 @@ public class LicenciaLlenadoDatos extends javax.swing.JFrame {
     private void brn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brn_regresarActionPerformed
         this.dispose();
     }//GEN-LAST:event_brn_regresarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 //    /**
 //     * @param args the command line arguments
